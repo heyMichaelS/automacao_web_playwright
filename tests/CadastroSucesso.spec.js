@@ -20,8 +20,10 @@ await page.locator('#email').fill('michaelfelipe777@gmail.com');
 await page.locator('#password').click();
 await page.locator('#password').fill('123456');
 await page.getByRole('button', { name: 'Cadastrar' }).click();
-await page.getByRole('heading', { name: 'Cadastro realizado!' }).click();
-await page.getByText('Bem-vindo michael').click();
+await expect(page.locator('.swal2-title')).toHaveText(/Cadastro realizado!/);
+await expect(page.locator('.swal2-html-container')).toHaveText(/Bem-vindo michael/);
 await page.getByRole('button', { name: 'OK' }).click();
 
 })
+
+
